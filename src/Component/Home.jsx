@@ -10,7 +10,16 @@ const Home = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
-  const [userdata, setusedata] = useState({});
+  const [userdata, setusedata] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    country: "",
+    state: "",
+    gender: "",
+    dateOfBirth: "",
+    age: "",
+  });
 
   useEffect(() => {
     axios
@@ -80,7 +89,14 @@ const Home = () => {
     setage(userage);
     setusedata({ ...userdata, age: userage, dateOfBirth: dateOfBirth });
   };
+
   const handleSubmit = async () => {
+    for (const key in userdata) {
+      if (userdata[key] === "") {
+        alert("Please fill in all fields");
+        return;
+      }
+    }
     if (age > 14) {
       axios
         .post("https://api-server-9wfz.onrender.com/api-user/add", userdata)
@@ -89,7 +105,7 @@ const Home = () => {
         })
         .catch((err) => console.log(err));
     } else {
-      alert("user is under 14 are not allowed");
+      alert("only user with age above 14 are allowed");
     }
   };
   const handleCityChange = (e) => {

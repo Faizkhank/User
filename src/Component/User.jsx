@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 const User = () => {
   const param = useParams();
   const [user, setuser] = useState("");
-  console.log(user);
   useEffect(() => {
     axios
       .get(`https://api-server-9wfz.onrender.com/api-user/${param.id}`)
