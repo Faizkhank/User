@@ -7,7 +7,7 @@ const User = () => {
   console.log(user);
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api-user/${param.id}`)
+      .get(`https://api-server-9wfz.onrender.com/api-user/${param.id}`)
       .then((res) => {
         if (res.data.success === true) {
           setuser(res.data.users);

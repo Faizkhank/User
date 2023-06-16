@@ -84,7 +84,7 @@ const Home = () => {
     console.log(userdata);
     if (age > 14) {
       axios
-        .post("http://localhost:4000/api-user/add", userdata)
+        .post("https://api-server-9wfz.onrender.com/api-user/add", userdata)
         .then((res) => {
           setresponse(res.data);
         })
@@ -242,10 +242,10 @@ const Home = () => {
           <div className="w-full h-[70px] rounded-lg shadow-lg p-3">
             <p className=" font-semibold">User database link</p>
             <Link
-              to={`http://localhost:3000/user/${response.userId}`}
+              to={`https://user-lake.vercel.app/user/${response.userId}`}
               className=" text-blue-400"
             >
-              http://localhost:3000/user/{response.userId}
+              https://user-lake.vercel.app/user/{response.userId}
             </Link>
           </div>
         ) : null}
