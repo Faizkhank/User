@@ -11,7 +11,7 @@ const Home = () => {
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [userdata, setusedata] = useState({});
-  console.log(response);
+
   useEffect(() => {
     axios
       .get(
@@ -81,7 +81,6 @@ const Home = () => {
     setusedata({ ...userdata, age: userage, dateOfBirth: dateOfBirth });
   };
   const handleSubmit = async () => {
-    console.log(userdata);
     if (age > 14) {
       axios
         .post("https://api-server-9wfz.onrender.com/api-user/add", userdata)
@@ -239,11 +238,11 @@ const Home = () => {
           </div>
         </div>
         {response ? (
-          <div className="w-full h-[70px] rounded-lg shadow-lg p-3">
+          <div className="w-full h-[200px] rounded-lg shadow-lg p-3">
             <p className=" font-semibold">User database link</p>
             <Link
               to={`https://user-lake.vercel.app/user/${response.userId}`}
-              className=" text-blue-400"
+              className=" text-blue-400 overflow-hidden"
             >
               https://user-lake.vercel.app/user/{response.userId}
             </Link>
